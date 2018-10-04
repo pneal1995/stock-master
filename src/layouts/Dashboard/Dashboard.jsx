@@ -16,6 +16,7 @@ import dashboardStyle from "assets/jss/material-dashboard-react/layouts/dashboar
 import image from "assets/img/sidebar-4.jpg";
 import logo from "assets/img/dollarsign.svg";
 
+
 const switchRoutes = (
   <Switch>
     {dashboardRoutes.map((prop, key) => {
@@ -72,12 +73,12 @@ class App extends React.Component {
       <div className={classes.wrapper}>
         <Sidebar
           routes={dashboardRoutes}
-          logoText={"STOCK CHECKER"}
+          logoText={"Aureum Terra"}
           logo={logo}
           image={image}
           handleDrawerToggle={this.handleDrawerToggle}
           open={this.state.mobileOpen}
-          color="green"
+          color="primary"
           {...rest}
         />
         <div className={classes.mainPanel} ref="mainPanel">

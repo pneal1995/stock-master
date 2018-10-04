@@ -1,10 +1,11 @@
 import Whatshot from "@material-ui/icons/Whatshot"
 import DashboardPage from "views/Dashboard/Dashboard.jsx";
 
+
 const dashboardRoutes = [
   {
     path: "/dashboard",
-    sidebarName: "Just gonna send it",
+    sidebarName: "NASDAQ Query",
     navbarName: "",
     icon: Whatshot,
     component: DashboardPage

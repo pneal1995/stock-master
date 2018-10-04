@@ -53,19 +53,23 @@ class Dashboard extends React.Component {
     const intraDay = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${term}&interval=5min&apikey=${key}&datatype=csv`;
 
     axios.get(batchQuote)
+      
       .then(res => {
+        
+          let stock = _.flattenDeep(Array.from(res.data['Stock Quotes']).map((stock) => [stock['1. symbol'], stock['2. price'], stock['3. volume'], stock['4. timestamp']]));
 
-        let stock = _.flattenDeep(Array.from(res.data['Stock Quotes']).map((stock) => [stock['1. symbol'], stock['2. price'], stock['3. volume'], stock['4. timestamp']]));
-
-        this.setState((state, props) => {
-
-          return {
-            ...state,
-            stocks: this.state.stocks.concat([stock])
-
-          }
-        })
+          this.setState((state, props) => {
+  
+            return {
+              ...state,
+              stocks: this.state.stocks.concat([stock])
+  
+            }
+          })
+        
+        
       })
+      .catch(error => console.log(error.response))
       .then
     axios.get(intraDay)
       .then(res => {
@@ -85,7 +89,9 @@ class Dashboard extends React.Component {
           finalData.push(parsed);
         });
         finalData.pop();
-
+        
+        finalData = _.sortBy(finalData,"0");
+        console.log(finalData);
         this.props.onApiData(finalData);
 
 
@@ -98,7 +104,7 @@ class Dashboard extends React.Component {
 
 
       })
-      .catch(error => console.log(error))
+      .catch(error => console.log(error.response))
   }
 
 
@@ -113,7 +119,7 @@ class Dashboard extends React.Component {
         zoomType: 'x',
       },
       title: {
-        text: this.state.term + ' Stock Chart'
+        text: this.state.term
       },
       rangeSelector: {
         buttons: [{
@@ -169,7 +175,7 @@ class Dashboard extends React.Component {
           data: this.props.stocks
         },
         labels: {
-          align: 'right',
+          align: 'left',
         }
       },
       series: {
@@ -184,37 +190,40 @@ class Dashboard extends React.Component {
     }
     return (
       <div>
+        
         <GridContainer>
         <GridItem xs={12} sm={12} md={12}>
-          <Card plain>
-            <CardHeader plain color="primary">
+          <Card>
+            <CardHeader color="primary">
               <h4 className={classes.cardTitleWhite}>
-                NASDAQ QUOTE CHECKER
+                NASDAQ Query
             </h4>
               <p className={classes.cardCategoryWhite}>
-                Search stocks using their NASDAQ symbol to populate the components below!
+                Search stocks with a NASDAQ symbol to populate the components below!
             </p>
             </CardHeader>
             <CardBody>
-            <SearchBar value={value}
+            <SearchBar 
+            value={value}
         onChange={this.handleChange}
         onClick={this.handleClick} />
         <Table
-                tableHeaderColor="primary"
+                tableHeaderColor="black"
                 tableHead={["Symbol", "Price", "Volume", "Timestamp"]}
                 tableData={stocks
 
                 }
               />
-            </CardBody>
-          </Card>
-        </GridItem>
-        </GridContainer>
+            
       <HighchartsReact
         highcharts={Highcharts}
         constructorType={'stockChart'}
         options={stockOptions}
       />
+</CardBody>
+          </Card>
+        </GridItem>
+        </GridContainer>
       </div >
     );
   }
