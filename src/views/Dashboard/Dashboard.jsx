@@ -130,7 +130,7 @@ class Dashboard extends React.Component {
       finalData.pop();
       finalData = _.sortBy(finalData, "0");
       this.props.onApiData(finalData);
-      
+      console.log(this.props.stocks)
     })
     .catch(error => {
       if (error.response) {
@@ -143,6 +143,7 @@ class Dashboard extends React.Component {
   render() {
     const { classes } = this.props;
     const value = this.state.value;
+    console.log(this.props)
     const stockOptions = {
       chart: {
         type: 'candlestick',
@@ -243,7 +244,7 @@ class Dashboard extends React.Component {
             <Card>
               <CardHeader color="primary">
                 <h4 className={classes.cardTitleWhite}>
-                  Stock Query
+                  NASDAQ Stocks
             </h4>
                 <p className={classes.cardCategoryWhite}>
                   Search stocks with a NASDAQ symbol to populate the components below!
