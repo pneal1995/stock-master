@@ -16,9 +16,10 @@ import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardS
 class Portfolio extends React.Component {
   constructor(props) {
     super(props);
-
+    
     this.state = {
-        stocks: []
+        stocks: [],
+        title: ''
         
     };
     
@@ -26,13 +27,14 @@ class Portfolio extends React.Component {
 }
 componentDidMount(){
     if (this.props.portfolio === undefined) {
-        console.log("Add assets to your portfolio so that you can see them!")
-        console.log(this.props)
-    }else{
-        console.log(this.props)
         this.setState({
-            portfolio: this.props.portfolio
+            title: 'Add assets to your portfolio so that you can see them!'
         })
+    }else{
+        this.setState({
+            title: 'Your Portfolio'
+        })
+        console.log(this.props)
     }
 }
 
@@ -44,6 +46,11 @@ componentDidMount(){
         <GridContainer>
           <GridItem xs={12} sm={12} md={12}>
             <Card>
+            <CardHeader color="primary">
+                <h4 className={classes.cardTitleWhite}>
+                  {this.state.title}
+            </h4>
+            </CardHeader>
               <CardBody>
                 <Table
                   tableHeaderColor="primary"
