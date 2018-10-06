@@ -18,6 +18,7 @@ import SearchBar from "components/SearchBar/SearchBar.js";
 import withStyles from "@material-ui/core/styles/withStyles";
 import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx"
+import { KEY } from "../../config"
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -52,7 +53,7 @@ class Dashboard extends React.Component {
     let finalData = [];
     let emptyPortfolio = [];
     let term = this.state.value;
-    const key = '8JCH8R83D5Z8SNQA';
+    const key = KEY;
     const batchQuote = `https://www.alphavantage.co/query?function=BATCH_STOCK_QUOTES&symbols=${term}&apikey=${key}`;
     const intraDay = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${term}&interval=5min&apikey=${key}&datatype=csv`;
     const daily = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${term}&outputsize=full&apikey=${key}&datatype=csv`
@@ -130,7 +131,7 @@ class Dashboard extends React.Component {
       finalData.pop();
       finalData = _.sortBy(finalData, "0");
       this.props.onApiData(finalData);
-      console.log(this.props.stocks)
+
     })
     .catch(error => {
       if (error.response) {
@@ -143,7 +144,7 @@ class Dashboard extends React.Component {
   render() {
     const { classes } = this.props;
     const value = this.state.value;
-    console.log(this.props)
+
     const stockOptions = {
       chart: {
         type: 'candlestick',

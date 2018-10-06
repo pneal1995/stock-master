@@ -18,6 +18,7 @@ import SearchBar from "components/SearchBar/SearchBar.js";
 import withStyles from "@material-ui/core/styles/withStyles";
 import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx"
+import { KEY } from "../../config"
 
 class Crypto extends React.Component {
     constructor(props) {
@@ -52,14 +53,14 @@ class Crypto extends React.Component {
         let finalData = [];
         let emptyPortfolio = [];
         let term = this.state.value;
-        const key = '8JCH8R83D5Z8SNQA';
+        const key = KEY;
         const exchangeRateUrl = `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${term}&to_currency=USD&apikey=${key}`;
         const daily = `https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=${term}&market=USD&apikey=${key}&datatype=csv`;
         if (this.state.value == "") {
             return "enter text"
         }
         Promise.all([
-            axios.get(exchangeRateUrl, daily),
+            axios.get(exchangeRateUrl),
             axios.get(daily)
         ]).then(([exchangeRate, daily]) => {
             ///////////////////////////////////
@@ -75,7 +76,7 @@ class Crypto extends React.Component {
 
                 }
             })
-            //   console.log(this.state.crypto)
+
             this.state.stocks.forEach(i => {
                 var names = [i[1], i[4], "", i[5]];
                 emptyPortfolio.push(names);
@@ -109,9 +110,9 @@ class Crypto extends React.Component {
             finalData.pop();
 
             finalData = _.sortBy(finalData, "0");
-            console.log(finalData)
+
             this.props.onApiData(finalData);
-            console.log(this.props)
+
 
         })
             .catch(error => {
@@ -125,7 +126,7 @@ class Crypto extends React.Component {
     render() {
         const { classes } = this.props;
         const value = this.state.value;
-        console.log(this.props)
+
         const stockOptions = {
             chart: {
                 type: 'candlestick',

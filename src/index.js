@@ -10,6 +10,7 @@ import "assets/css/material-dashboard-react.css?v=1.5.0";
 import stockReducer from "./reducers/stockReducer";
 
 import indexRoutes from "routes/index.jsx";
+import registerServiceWorker from './registerServiceWorker'
 
 const store = createStore(stockReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 const hist = createBrowserHistory();
@@ -26,3 +27,4 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
+registerServiceWorker()

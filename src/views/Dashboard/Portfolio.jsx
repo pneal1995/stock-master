@@ -34,7 +34,6 @@ componentDidMount(){
         this.setState({
             title: 'Your Portfolio'
         })
-        console.log(this.props)
     }
 }
 
