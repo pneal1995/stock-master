@@ -42,7 +42,7 @@ const tableStyle = theme => ({
   tableHeadCell: {
     color: "inherit",
     ...defaultFont,
-    fontSize: "1em"
+    fontSize: "1.1em"
   },
   tableCell: {
     ...defaultFont,

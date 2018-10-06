@@ -9,6 +9,9 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 // core components
 import tableStyle from "assets/jss/material-dashboard-react/components/tableStyle.jsx";
+import { Button } from "@material-ui/core";
+import AddRounded from "@material-ui/icons/AddRounded";
+import Remove from "@material-ui/icons/Remove";
 
 function CustomTable({ ...props }) {
   const { classes, tableHead, tableData, tableHeaderColor } = props;
@@ -28,6 +31,8 @@ function CustomTable({ ...props }) {
                   </TableCell>
                 );
               })}
+              {/* <TableCell>Add Stock</TableCell>
+              <TableCell>Remove Stock</TableCell> */}
             </TableRow>
           </TableHead>
         ) : null}
@@ -42,6 +47,9 @@ function CustomTable({ ...props }) {
                     </TableCell>
                   );
                 })}
+                {/* <TableCell><Button><AddRounded/></Button> </TableCell>
+                <TableCell><Button><Remove/></Button></TableCell> */}
+                
               </TableRow>
             );
           })}

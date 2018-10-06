@@ -2,7 +2,8 @@ function stockReducer(state, action) {
     if (state === undefined) {
         
       return { 
-            stocks: []
+            stocks: [],
+            portfolio: []
       };
     }
 
@@ -13,7 +14,11 @@ switch(action.type){
         ...state,
         stocks: action.stocks
         }  
-   
+    case "addToPortfolio" :
+    return{
+        ...state,
+        portfolio: state.portfolio.concat(action.portfolio)
+    }
     default:
             return (state)
         }
