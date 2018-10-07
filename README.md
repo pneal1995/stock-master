@@ -1,54 +1,45 @@
 // TODO LIST //
 
-Database setup and migrate - sequelize
+/ Routes /
 
-users table
+Bcrypt with json web tokens & Login route
 
-Assets table (commodity, total value)
+✓ News route
 
-Stocks table
+✓ Portfolio route/table component
 
-Crypto table
+  -- Remove asset on portfolio table route, prompt (are you sure?) 
 
-Cash, metals table
+✓ Stocks route
 
-Add db query on portfolio page
+✓ Crypto route
+ 
+  -- Add auto fill for searching stock, metals, or currency
 
-Recently searched table
+/ API's /
 
-My portfolio table
+✓ Alphavantage api
 
-Remove asset on portfolio table route, prompt (are you sure?) 
+Watson news api
 
-Add auto fill for searching stock, metals, or currency
+move variables to .env file (api keys, db keys, Watson user/pass iam api keys)
+  
+  - Alert if a stock has either dropped or increased in price
+  
+/ Database /
 
-Login route
+✓ Database setup and migrate - sequelize
 
-Style the page
-
-Bcrypt with json web tokens 
-
-News route
-
-Watson news api,
-
-Display on cards in a grid,
-
-Connect to sql db
+✓ -- Stocks db table 
 
 Hosted database
 
+Crypto db table
+
+/ Python /
 
 Connect python
 
 Connect stocker.py to database
 
 Serve graph data from stocker.py to client
-
-Set alerts
-
-Ex. Alert if a stock has dropped in price,
-
-Or if it has increased in price
-
-move variables to .env file (api keys, db keys, Watson user/pass iam api keys)
