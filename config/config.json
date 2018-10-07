@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "prestonneal",
+    "password": "password",
+    "database": "prestonneal",
+    "host": "localhost",
+    "dialect": "postgresql"
+  },
+  "test": {
+    "username": "prestonneal",
+    "password": "password",
+    "database": "prestonneal",
+    "host": "localhost",
+    "dialect": "postgresql"
+  },
+  "production": {
+    "username": "prestonneal",
+    "password": "password",
+    "database": "prestonneal",
+    "host": "localhost",
+    "dialect": "postgresql"
+  }
+}

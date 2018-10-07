@@ -110,7 +110,7 @@ class Crypto extends React.Component {
             finalData.pop();
 
             finalData = _.sortBy(finalData, "0");
-
+            console.log(finalData)
             this.props.onApiData(finalData);
 
 

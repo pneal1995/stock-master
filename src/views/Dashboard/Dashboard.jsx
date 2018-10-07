@@ -49,6 +49,7 @@ class Dashboard extends React.Component {
       term: this.state.value
     });
 
+
     let emptyData = [];
     let finalData = [];
     let emptyPortfolio = [];
@@ -108,7 +109,7 @@ class Dashboard extends React.Component {
       });
       emptyData = [];
       finalData.pop();
-
+      console.log(finalData)
       finalData = _.sortBy(finalData, "0");
       ////////////////////////////////////////////
       // 20 Years Historical Daily Data Sorting //
@@ -240,11 +241,12 @@ class Dashboard extends React.Component {
 
     return (
       <div>
+        
         <GridContainer>
           <GridItem xs={12} sm={12} md={12}>
             <Card>
-              <CardHeader color="primary">
-                <h4 className={classes.cardTitleWhite}>
+              <CardHeader color="rose">
+                <h4  className={classes.cardTitleWhite}>
                   NASDAQ Stocks
             </h4>
                 <p className={classes.cardCategoryWhite}>
