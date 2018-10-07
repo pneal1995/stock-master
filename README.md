@@ -36,8 +36,6 @@ Hosted database
 
 Crypto db table
 
-
-
 / Python /
 
 Connect python
